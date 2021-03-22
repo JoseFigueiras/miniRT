@@ -9,6 +9,9 @@
 # include "libft.h"
 # include "structs.h"
 
-void	*mlx_init();
+void	do_everything(t_scene scene);
+char	*get_file_name(int argc, char **argv);
+t_scene	get_scene(int fd);
+int		is_scene_valid(t_scene scene);				//TODO
 
 #endif
