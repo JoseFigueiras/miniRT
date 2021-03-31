@@ -2,11 +2,18 @@
 
 int	main(int argc, char **argv)
 {
-	t_mlx	mlx_data;
-	int		x = 1600;
-	int		y = 800;
+	t_scene	scene;
+	int		file_descriptor;
+	char	*file_name;
 
-	mlx_data.mlx = mlx_init();
-	mlx_data.win = mlx_new_window(mlx_data.mlx, x, y, "My window name");
-	mlx_loop(mlx_data.mlx);
+	file_name = get_file_name(argc, argv);
+	if (!file_name)
+		exit(1);
+	file_descriptor = open(file_name, O_RDONLY);
+	if (!file_descriptor)
+		exit(1);
+	scene = get_scene(file_descriptor);
+	if (!is_scene_valid(scene))
+		exit(1);
+	do_everything(scene);
 }

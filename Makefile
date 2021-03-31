@@ -1,14 +1,19 @@
-NAME		= miniRT
+NAME		=	miniRT
 
-INCLUDES	= ./includes/
-SRCS		= minirt.c
-OBJS		= $(SRCS:.c=.o)
+FLAGS		=	-Wall -Wextra -Werror
+OBJDIR		=	/objs/
+INCLUDES	=	-Iincludes
+
+SRCS		=	minirt.c			\
+				$(wildcard srcs/**/*.c)
+			
+OBJS		= 	$(SRCS:.c=.o)
 
 all: $(OBJS)
 	gcc	$(OBJS) -Lminilibx -lmlx_Linux  -lXext -lX11 -o $(NAME)
 
 %.o: %.c
-	gcc -c -I $(INCLUDES) $< -o $@
+	gcc $< -o $@ $(INCLUDES)
 
 clean:
 	rm -f $(OBJS)
