@@ -18,9 +18,12 @@ char		*get_file_name(int argc, char **argv);
 t_scene		get_scene(int fd);
 t_res		*get_resolution(char **words);
 t_amb		*get_ambient_light(char **words);
+//TODO: handle mallocs better
 t_camlst	*camlst_add(char **words, t_camlst *lst);
-t_lightlst	*lightlst_add(char **words, t_lightlst *lst);	//TODO
-t_objlst	*objlst_add(char **words, t_objlst *lst);		//TODO
+t_lightlst	*lightlst_add(char **words, t_lightlst *lst);
+t_objlst	*objlst_add(char **words, t_objlst *lst);
+
+//TODO: add here all the TODO obj functions
 
 size_t		get_arr_size(char **arr);
 int			get_rgb(char *str);

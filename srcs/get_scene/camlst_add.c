@@ -30,6 +30,8 @@ static t_camlst	*camlst_new(t_xyz coords, t_xyz vec, float fov)
 	t_camlst	*new;
 
 	new = malloc(sizeof(t_camlst));
+	if (!new)
+		return (NULL);
 	new->coords = coords;
 	new->vec = vec;
 	new->fov = fov;

@@ -45,12 +45,12 @@ static t_scene	parse_and_fill_scene(t_scene scene, char **words)
 	else if (!ft_strcmp(words[0], "A"))
 		scene.amb = get_ambient_light(words);
 	else if (!ft_strcmp(words[0], "c"))
-		scene.camlst = camlst_add(words, &scene.camlst);
+		scene.camlst = camlst_add(words, scene.camlst);
 	else if (!ft_strcmp(words[0], "l"))
-		scene.lightlst = lightlst_add(words, &scene.lightlst);
+		scene.lightlst = lightlst_add(words, scene.lightlst);
 	else if (!ft_strcmp(words[0], "sp" || !ft_strcmp(words[0], "pl" ||
 			!ft_strcmp(words[0], "sq" || !ft_strcmp(words[0], "cy" ||
 			!ft_strcmp(words[0], "tr"))
-		scene.objlst = objlst_add(words, &scene.objlst);
+		scene.objlst = objlst_add(words, scene.objlst);
 	return (scene);
 }
