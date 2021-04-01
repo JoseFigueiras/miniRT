@@ -7,7 +7,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "mlx.h"
-# include "libft.h"
+# include "../Libft/libft.h"
 # include "structs.h"
 
 # define WHITE_SPACE " \t\n\r\v\f"
@@ -18,13 +18,17 @@ char		*get_file_name(int argc, char **argv);
 t_scene		get_scene(int fd);
 t_res		*get_resolution(char **words);
 t_amb		*get_ambient_light(char **words);
-//TODO: handle mallocs better
+//TODO: handle mallocs better (perhaps?)
 t_camlst	*camlst_add(char **words, t_camlst *lst);
 t_lightlst	*lightlst_add(char **words, t_lightlst *lst);
 t_objlst	*objlst_add(char **words, t_objlst *lst);
-
-//TODO: add here all the TODO obj functions
-
+//-//
+t_sphere	*sphere_new(char **words);
+t_plane		*plane_new(char **words);
+t_square	*square_new(char **words);
+t_cylinder	*cylinder_new(char **words);
+t_triangle	*triangle_new(char **words);
+//-//
 size_t		get_arr_size(char **arr);
 int			get_rgb(char *str);
 t_xyz		get_coords(char *str);
