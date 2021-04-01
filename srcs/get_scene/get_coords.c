@@ -4,6 +4,7 @@ t_xyz	get_coords(char *str)
 {
 	t_xyz	ret;
 	char	temp[4];
+	int		i;
 
 	ft_memset(temp, '\0', 4);
 	i = 0;

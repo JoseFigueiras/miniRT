@@ -33,8 +33,7 @@ static t_scene init_scene(void)
 	scene.objlst = NULL;
 	scene.amb = NULL;
 	scene.camlst = NULL;
-	x = 0;
-	y = 0;
+	scene.res = NULL;
 	return (scene);
 }
 
@@ -48,8 +47,8 @@ static t_scene	parse_and_fill_scene(t_scene scene, char **words)
 		scene.camlst = camlst_add(words, scene.camlst);
 	else if (!ft_strcmp(words[0], "l"))
 		scene.lightlst = lightlst_add(words, scene.lightlst);
-	else if (!ft_strcmp(words[0], "sp" || !ft_strcmp(words[0], "pl" ||
-			!ft_strcmp(words[0], "sq" || !ft_strcmp(words[0], "cy" ||
+	else if (!ft_strcmp(words[0], "sp") || !ft_strcmp(words[0], "pl") ||
+			!ft_strcmp(words[0], "sq") || !ft_strcmp(words[0], "cy") ||
 			!ft_strcmp(words[0], "tr"))
 		scene.objlst = objlst_add(words, scene.objlst);
 	return (scene);

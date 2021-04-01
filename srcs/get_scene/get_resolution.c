@@ -11,7 +11,7 @@ t_res	*get_resolution(char **words)
 	ret = malloc(sizeof(t_res));
 	if (!ret)
 		return (NULL);
-	ret.x = ft_atoi(words[1]);
-	ret.y = ft_atoi(words[2]);
+	ret->x = ft_atoi(words[1]);
+	ret->y = ft_atoi(words[2]);
 	return (ret);
 }

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static t_objlst	*objlst_new(char *word);
+static t_objlst	*objlst_new(char *type);
 static t_objlst	*objlst_push(t_objlst *lst, t_objlst *new);
 
 t_objlst	*objlst_add(char **words, t_objlst *lst)
@@ -28,17 +28,17 @@ t_objlst	*objlst_add(char **words, t_objlst *lst)
 	return (lst);
 }
 
-static t_objlst	*objlst_new(char *word)
+static t_objlst	*objlst_new(char *type)
 {
 	t_objlst	*new;
 
 	new = malloc(sizeof(t_objlst));
 	if (!new)
 		return (NULL);
-	new->type = ft_strdup(word);
-	if (!new.type)
+	new->type = ft_strdup(type);
+	if (!new->type)
 		return (NULL);
-	new.next = NULL;
+	new->next = NULL;
 	return (new);
 }
 

@@ -11,7 +11,7 @@ t_amb	*get_ambient_light(char **words)
 	ret = malloc(sizeof(t_amb));
 	if (!ret)
 		return (NULL);
-	ret.brightness = get_brightness(words[1]);
-	ret.xyz = get_rgb(words[2]);
+	ret->brightness = get_brightness(words[1]);
+	ret->color = get_rgb(words[2]);
 	return (ret);
 }
