@@ -4,16 +4,17 @@ FLAGS		=	-Wall -Wextra -Werror
 OBJDIR		=	/objs/
 INCLUDES	=	-Iincludes
 
-SRCS		=	minirt.c			\
-				$(wildcard srcs/**/*.c)
+SRCS		=	minirt.c								\
+				$(wildcard Libft/*.c)					\
+				$(wildcard srcs/*/*.c)
 			
 OBJS		= 	$(SRCS:.c=.o)
 
 all: $(OBJS)
-	gcc	$(OBJS) -Lminilibx -lmlx_Linux  -lXext -lX11 -o $(NAME)
+	gcc $(OBJS) -Lminilibx -lmlx_Linux  -lXext -lX11 -o $(NAME)
 
 %.o: %.c
-	gcc $< -o $@ $(INCLUDES)
+	gcc $< -c -o $@ $(INCLUDES)
 
 clean:
 	rm -f $(OBJS)
