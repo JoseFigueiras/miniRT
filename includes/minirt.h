@@ -12,6 +12,11 @@
 
 # define WHITE_SPACE " \t\n\r\v\f"
 
+//DEBUG//
+void		print_scene(t_scene scene);
+void		print_objlst(t_objlst *objlst);		//TODO
+//DEBUG//
+
 char		*get_file_name(int argc, char **argv);
 
 //-----//	get_scene
@@ -34,7 +39,7 @@ int			get_rgb(char *str);
 t_xyz		get_coords(char *str);
 t_xyz		get_vec(char *str);
 float		get_brightness(char *str);
-//-----//
+//-----//	get_scene end
 
 int			is_scene_valid(t_scene scene);					//TODO
 

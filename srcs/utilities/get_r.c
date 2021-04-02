@@ -2,5 +2,5 @@
 
 int	get_r(int trgb)
 {
-	return(trgb & (0xFF << 16));
+	return((trgb & 0xFF0000) >> 16);
 }

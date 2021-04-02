@@ -6,7 +6,7 @@ t_amb	*get_ambient_light(char **words)
 
 	if (!words || !*words)
 		return (NULL);
-	if (get_arr_size(words) <= 3)
+	if (get_arr_size(words) < 2)
 		return (NULL);
 	ret = malloc(sizeof(t_amb));
 	if (!ret)
