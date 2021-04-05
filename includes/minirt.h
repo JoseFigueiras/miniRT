@@ -37,7 +37,7 @@ float		get_brightness(char *str);
 int			is_scene_valid(t_scene scene);					//TODO
 
 //-----//	do_everything			//------------------------------//
-void		do_everything(t_scene scene);					//TODO
+void		do_everything(t_scene scene);
 int			get_pixel_color(int x, int y, t_scene scene);
 //-----//	do_everything end		//------------------------------//
 
