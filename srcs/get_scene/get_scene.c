@@ -34,8 +34,8 @@ static t_scene init_scene(void)
 {
 	t_scene	scene;
 
-	scene.mlx_data.mlx = NULL;
-	scene.mlx_data.win = NULL;
+	scene.mlx_data = NULL;
+	scene.img_data = NULL;
 	scene.objlst = NULL;
 	scene.amb = NULL;
 	scene.camlst = NULL;

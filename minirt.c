@@ -20,6 +20,5 @@ int	main(int argc, char **argv)
 	//print_scene(scene);
 	if (!is_scene_valid(scene))
 		exit(1);
-	scene.mlx_data = get_mlx(scene.res);
 	do_everything(scene);
 }

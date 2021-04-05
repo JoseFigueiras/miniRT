@@ -34,14 +34,11 @@ t_xyz		get_vec(char *str);
 float		get_brightness(char *str);
 //-----//	get_scene end			//------------------------------//
 
-//-----//	get_mlx					//------------------------------//
-t_mlx		*get_mlx(t_res *res);
-//-----//	get_mlx end				//------------------------------//
-
 int			is_scene_valid(t_scene scene);					//TODO
 
 //-----//	do_everything			//------------------------------//
 void		do_everything(t_scene scene);					//TODO
+int			get_pixel_color(int x, int y, t_scene scene);
 //-----//	do_everything end		//------------------------------//
 
 //-----//	utilities				//------------------------------//
@@ -50,6 +47,9 @@ int			get_t(int trgb);
 int			get_r(int trgb);
 int			get_g(int trgb);
 int			get_b(int trgb);
+
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
 //-----//							//------------------------------//
 
 //DEBUG//
