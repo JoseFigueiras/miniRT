@@ -11,7 +11,7 @@ t_scene	get_scene(int fd)
 	int			i;
 
 	scene = init_scene();
-	printf("scene inited\n");
+	//printf("scene inited\n");
 	while (get_next_line(fd, &temp))
 	{
 		words = ft_str_split(temp, WHITE_SPACE);
@@ -19,8 +19,8 @@ t_scene	get_scene(int fd)
 		if (!words || !*words)		//what am i even doing
 			exit(54);
 		for (int j = 0; words[j]; j++)
-			printf("%s\n", words[j]);
-		printf("--------\n");
+			//printf("%s\n", words[j]);
+		//printf("--------\n");
 		scene = parse_and_fill_scene(scene, words);
 		i = 0;
 		while (words[i])

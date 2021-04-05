@@ -100,7 +100,7 @@ typedef struct		s_objlst
 
 typedef struct	s_scene
 {
-	t_mlx		mlx_data;
+	t_mlx		*mlx_data;
 	t_res		*res;
 	t_amb		*amb;
 	t_camlst	*camlst;
