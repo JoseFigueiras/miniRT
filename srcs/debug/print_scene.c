@@ -62,14 +62,15 @@ static void	print_camlst(t_camlst *camlst)
 	current = camlst;
 	do
 	{
-		printf("start node\n");
+		printf(" start node\n");
 		printf("coords: x: %f, y: %f, z: %f\n",
 				current->coords.x, current->coords.y, current->coords.z);
 		printf("vec: x: %f, y: %f, z: %f\n",
 				current->vec.x, current->vec.y, current->vec.z);
 		printf("float fov: %f\n", current->fov);
-		printf("end node\n");
-	} while (current->next != save);
+		printf(" end node\n");
+		current = current->next;
+	} while (current != save);
 }
 
 static void	print_lightlst(t_lightlst *lightlst)
