@@ -39,6 +39,21 @@ int			is_scene_valid(t_scene scene);					//TODO
 //-----//	do_everything			//------------------------------//
 void		do_everything(t_scene scene);
 int			get_pixel_color(int x, int y, t_scene scene);
+t_line		get_line(int x, int y, t_scene scene);			//TODO
+int			raycast_objs(t_line line, t_scene scene);
+float		raycast(t_line line, t_scene scene, t_objlst *obj, int *color);
+
+float		raycast_sphere(t_line line, t_scene scene,		//TODO
+							t_sphere *obj, int *color);
+float		raycast_plane(t_line line, t_scene scene,		//TODO
+							t_plane *obj, int *color);
+float		raycast_square(t_line line, t_scene scene,		//TODO
+							t_square *obj, int *color);
+float		raycast_cylinder(t_line line, t_scene scene,	//TODO
+							t_cylinder *obj, int *color);
+float		raycast_triangle(t_line line, t_scene scene,	//TODO
+							t_triangle *obj, int *color);
+
 //-----//	do_everything end		//------------------------------//
 
 //-----//	utilities				//------------------------------//
@@ -49,6 +64,10 @@ int			get_g(int trgb);
 int			get_b(int trgb);
 
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+float		vec_length(t_xyz vec);
+float		points_distance(t_xyz point1, t_xyz point2);
+t_xyz		normalize_vec(t_xyz vec);
 
 //-----//							//------------------------------//
 

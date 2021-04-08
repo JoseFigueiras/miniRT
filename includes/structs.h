@@ -109,4 +109,10 @@ typedef struct	s_scene
 	t_objlst	*objlst;
 }				t_scene;
 
+typedef struct	s_line
+{
+	t_xyz		point;
+	t_xyz		vec;
+}				t_line;
+
 #endif

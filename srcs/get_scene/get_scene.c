@@ -45,7 +45,7 @@ static t_scene init_scene(void)
 
 static t_scene	parse_and_fill_scene(t_scene scene, char **words)
 {
-	if (ft_strcmp(words[0], "R") == 0)
+	if (!ft_strcmp(words[0], "R"))
 		scene.res = get_resolution(words);
 	else if (!ft_strcmp(words[0], "A"))
 		scene.amb = get_ambient_light(words);

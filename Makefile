@@ -11,7 +11,7 @@ SRCS		=	minirt.c								\
 OBJS		= 	$(SRCS:.c=.o)
 
 all: $(OBJS)
-	gcc $(OBJS) -Lminilibx -lmlx_Linux  -lXext -lX11 -o $(NAME)
+	gcc $(OBJS) -Lminilibx -lmlx_Linux -lm -lXext -lX11 -o $(NAME)
 
 %.o: %.c
 	gcc $< -c -o $@ $(INCLUDES)
