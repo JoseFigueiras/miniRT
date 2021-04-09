@@ -68,6 +68,14 @@ void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 float		vec_length(t_xyz vec);
 float		points_distance(t_xyz point1, t_xyz point2);
 t_xyz		normalize_vec(t_xyz vec);
+float		dot(t_xyz v1, t_xyz v2);
+t_xyz		vec_sub(t_xyz v1, t_xyz v2);
+t_xyz		vec_add(t_xyz v1, t_xyz v2);
+t_xyz		vec_scale(t_xyz vec, float scalar);
+float		to_radians(float degrees);
+t_xyz		rotate_x(t_xyz vec, float degrees);
+t_xyz		rotate_y(t_xyz vec, float degrees);
+t_xyz		rotate_z(t_xyz vec, float degrees);
 
 //-----//							//------------------------------//
 
