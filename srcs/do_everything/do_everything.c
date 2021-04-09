@@ -31,6 +31,7 @@ static int	render_next_frame(t_scene *scene)
 		{
 			color = 0;
 			color = get_pixel_color(x, y, *scene);
+			//printf("x: %i, y: %i, color: %i\n", x, y, color);
 			my_mlx_pixel_put(img, x, y, color);
 			y++;
 		}
