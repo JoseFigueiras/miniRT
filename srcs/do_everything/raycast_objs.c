@@ -16,6 +16,7 @@ int	raycast_objs(t_line line, t_scene scene)
 	while (current)
 	{
 		distance_temp = raycast(line, scene, current, &color_temp);
+		//printf("distance_temp: %f\n", distance_temp);
 		//printf("|%f|\n", distance_temp);
 		if (distance_temp <= distance)
 		{
@@ -24,5 +25,6 @@ int	raycast_objs(t_line line, t_scene scene)
 		}
 		current = current->next;
 	}
+	//printf("color: %i\n", color);
 	return (color);
 }
