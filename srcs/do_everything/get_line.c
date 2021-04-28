@@ -1,45 +1,7 @@
 #include "minirt.h"
 
-//static t_line	get_new_line(int x, int y, t_scene scene);
-//
-//t_line	get_line(int x, int y, t_scene scene)
-//{
-//	t_line	cam_line;
-//	t_line	new_line;
-//	t_line	ret_line;
-//
-//	cam_line.point = scene.camlst->coords;
-//	cam_line.vec = scene.camlst->vec;
-//
-//	new_line = get_new_line(x, y, scene);
-//
-//	ret_line.point = vec_add(cam_line.point, new_line.point);
-//	ret_line.vec = new_line.vec;
-//	return (ret_line);
-//}
-//
-//static t_line	get_new_line(int x, int y, t_scene scene)
-//{
-//	t_line		line;
-//	t_camlst	cam;
-//	t_res		res;
-//	float		yaw;
-//	float		pitch;
-//
-//	cam = *scene.camlst;
-//	res = *scene.res;
-//	line.point.x = 0;
-//	line.point.y = 0;
-//	line.point.z = -1 / (tan(cam.fov / 2));
-//	line.vec.x = x - ((float)res.x / 2);
-//	line.vec.y = y - ((float)res.x / 2);
-//	line.vec.z = 1 / tan(cam.fov / 2);
-//	yaw = cam.fov;
-//	pitch = (cam.fov * res.y) / res.x;
-//	line.vec = rotate_x(line.vec, pitch);
-//	line.vec = rotate_y(line.vec, yaw);
-//	return (line);
-//}
+static t_euler	vec_to_euler(t_xyz vec);
+static t_xyz	euler_to_vec(t_euler euler);
 
 t_line	get_line(int x, int y, t_scene scene)
 {
@@ -47,22 +9,48 @@ t_line	get_line(int x, int y, t_scene scene)
 	float	fov;
 	float	x_max;
 	float	y_max;
-	float	angle;
+	t_euler	euler;
 
 	fov = (float)scene.camlst->fov;
 	x_max = (float)scene.res->x;
 	y_max = (float)scene.res->y;
+
+	euler = vec_to_euler(normalize_vec(scene.camlst->vec));
+
+	euler.yaw += fov * (((float)x - (x_max / 2)) / x_max);
+	euler.pitch += fov * (((float)y - (y_max / 2)) / x_max);
+	euler = normalize_euler(euler);
+
 	line.point = scene.camlst->coords;
-	line.vec = normalize_vec(scene.camlst->vec);
-	//angle = ((x - (x_max / 2)) * (fov / 2)) / (x_max / 2);
-	angle = fov * ((x - (x_max) / 2) / x_max);
-	line.vec = rotate_z(line.vec, angle);
-	//angle = ((y - (x_max / 2)) * (fov / 2)) / (x_max / 2);
-	line.vec = normalize_vec(line.vec);
-	fov = (y_max * fov) / x_max;
-	angle = fov * ((y - (y_max) / 2) / y_max);
-	line.vec = rotate_y(line.vec, angle * line.vec.x);
-	//line.vec = normalize_vec(line.vec);
-	//line.vec = rotate_x(line.vec, angle * line.vec.y);
+	line.vec = euler_to_vec(euler);
+
+	if (x == 540 && y == 360)
+	{
+		printf("euler:\nyaw: %f, pitch %f\n", euler.yaw, euler.pitch);
+		printf("vec: \nx: %f, y: %f, z: %f\n", line.vec.x, line.vec.y, line.vec.z);
+	}
 	return (line);
+}
+
+static t_euler	vec_to_euler(t_xyz vec)
+{
+	t_euler	euler;
+
+	euler.yaw = to_degrees(atan2(vec.y, vec.x));
+	euler.pitch = -to_degrees(asin(vec.z));
+	return (euler);
+}
+
+static t_xyz	euler_to_vec(t_euler euler)
+{
+	t_xyz	vec;
+	float	yaw;
+	float	pitch;
+
+	yaw = to_radians(euler.yaw);
+	pitch = to_radians(euler.pitch);
+	vec.x = cos(yaw) * cos(pitch);
+	vec.y = sin(yaw) * cos(pitch);
+	vec.z = -sin(pitch);
+	return (vec);
 }

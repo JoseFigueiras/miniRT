@@ -23,6 +23,13 @@ typedef struct	s_xyz
 	float		z;
 }				t_xyz;
 
+typedef struct	s_euler
+{
+	float		yaw;
+	float		pitch;
+	float		roll;
+}				t_euler;
+
 typedef struct			s_lightlst
 {
 	t_xyz				coords;

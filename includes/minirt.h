@@ -11,6 +11,7 @@
 # include "structs.h"
 
 # define WHITE_SPACE " \t\n\r\v\f"
+# define PI 3.14159
 
 char		*get_file_name(int argc, char **argv);
 
@@ -73,9 +74,11 @@ t_xyz		vec_sub(t_xyz v1, t_xyz v2);
 t_xyz		vec_add(t_xyz v1, t_xyz v2);
 t_xyz		vec_scale(t_xyz vec, float scalar);
 float		to_radians(float degrees);
+float		to_degrees(float radians);
 t_xyz		rotate_x(t_xyz vec, float degrees);
 t_xyz		rotate_y(t_xyz vec, float degrees);
 t_xyz		rotate_z(t_xyz vec, float degrees);
+t_euler		normalize_euler(t_euler euler);
 
 //-----//							//------------------------------//
 
