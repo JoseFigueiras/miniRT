@@ -6,7 +6,6 @@ int	get_pixel_color(int x, int y, t_scene scene)
 	int			color;
 
 	line = get_line(x, y, scene);
-	color = 0;
 	color = raycast_objs(line, scene);
 	return (color);
 }

@@ -12,6 +12,7 @@
 
 # define WHITE_SPACE " \t\n\r\v\f"
 # define PI 3.14159
+# define MAX_DEPTH 2
 
 char		*get_file_name(int argc, char **argv);
 
@@ -69,7 +70,6 @@ void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 float		vec_length(t_xyz vec);
 float		points_distance(t_xyz point1, t_xyz point2);
 t_xyz		normalize_vec(t_xyz vec);
-float		dot(t_xyz v1, t_xyz v2);
 t_xyz		vec_sub(t_xyz v1, t_xyz v2);
 t_xyz		vec_add(t_xyz v1, t_xyz v2);
 t_xyz		vec_scale(t_xyz vec, float scalar);
@@ -79,6 +79,9 @@ t_xyz		rotate_x(t_xyz vec, float degrees);
 t_xyz		rotate_y(t_xyz vec, float degrees);
 t_xyz		rotate_z(t_xyz vec, float degrees);
 t_euler		normalize_euler(t_euler euler);
+t_xyz		new_vec(float x, float y, float z);
+t_xyz		cross(t_xyz vec1, t_xyz vec2);
+float		dot(t_xyz v1, t_xyz v2);
 
 //-----//							//------------------------------//
 

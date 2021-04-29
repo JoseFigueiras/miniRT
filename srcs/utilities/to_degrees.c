@@ -4,6 +4,6 @@ float	to_degrees(float radians)
 {
 	float	degrees;
 
-	degrees = radians / 0.017453;
+	degrees = radians * 180 / PI;
 	return (degrees);
 }
