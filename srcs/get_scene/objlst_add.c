@@ -35,9 +35,18 @@ static t_objlst	*objlst_new(char *type)
 	new = malloc(sizeof(t_objlst));
 	if (!new)
 		return (NULL);
-	new->type = ft_strdup(type);
-	if (!new->type)
-		return (NULL);
+	if (!ft_strcmp(type, "sp"))
+		new->type = SPHERE;
+	else if (!ft_strcmp(type, "pl"))
+		new->type = PLANE;
+	else if (!ft_strcmp(type, "sq"))
+		new->type = SQUARE;
+	else if (!ft_strcmp(type, "cy"))
+		new->type = CYLINDER;
+	else if (!ft_strcmp(type, "tr"))
+		new->type = TRIANGLE;
+	else
+		printf("Uh oh, spaghetti-oh's!\n");
 	new->next = NULL;
 	return (new);
 }

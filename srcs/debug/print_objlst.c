@@ -7,15 +7,15 @@ void	print_objlst(t_objlst *objlst)
 	current = objlst;
 	while (current)
 	{
-		if (!ft_strcmp(current->type, "sp"))
+		if (current->type == SPHERE)
 			print_sphere(current->obj);
-		else if (!ft_strcmp(current->type, "pl"))
+		else if (current->type == PLANE)
 			print_plane(current->obj);
-		else if (!ft_strcmp(current->type, "sq"))
+		else if (current->type == SQUARE)
 			print_square(current->obj);
-		else if (!ft_strcmp(current->type, "cy"))
+		else if (current->type == CYLINDER)
 			print_cylinder(current->obj);
-		else if (!ft_strcmp(current->type, "tr"))
+		else if (current->type == TRIANGLE)
 			print_triangle(current->obj);
 		current = current->next;
 	}

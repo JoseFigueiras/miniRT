@@ -100,7 +100,7 @@ typedef struct	s_triangle
 
 typedef struct		s_objlst
 {
-	char			*type;
+	int				type;
 	void			*obj;
 	struct s_objlst	*next;
 }					t_objlst;
@@ -114,6 +114,7 @@ typedef struct	s_scene
 	t_camlst	*camlst;
 	t_lightlst	*lightlst;
 	t_objlst	*objlst;
+	int			*depth;
 }				t_scene;
 
 typedef struct	s_line

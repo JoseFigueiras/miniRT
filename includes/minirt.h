@@ -10,6 +10,12 @@
 # include "../Libft/libft.h"
 # include "structs.h"
 
+# define SPHERE 1
+# define PLANE 2
+# define SQUARE 3
+# define CYLINDER 4
+# define TRIANGLE 5
+
 # define WHITE_SPACE " \t\n\r\v\f"
 # define PI 3.14159
 # define MAX_DEPTH 2
