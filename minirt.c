@@ -14,9 +14,9 @@ int	main(int argc, char **argv)
 	//printf("fd: %d\n", file_descriptor);
 	if (file_descriptor <= 0)
 		exit(1);
-	printf("-----get scene-----\n");
+	//printf("-----get scene-----\n");
 	scene = get_scene(file_descriptor);
-	printf("-----got scene-----\n");
+	//printf("-----got scene-----\n");
 	//print_scene(scene);
 	if (!is_scene_valid(scene))
 		exit(1);

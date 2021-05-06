@@ -18,7 +18,8 @@
 
 # define WHITE_SPACE " \t\n\r\v\f"
 # define PI 3.14159
-# define MAX_DEPTH 2
+# define MAX_DEPTH 5
+# define MIN_THRESHOLD 0.1
 
 char		*get_file_name(int argc, char **argv);
 
@@ -48,19 +49,24 @@ int			is_scene_valid(t_scene scene);					//TODO
 void		do_everything(t_scene scene);
 int			get_pixel_color(int x, int y, t_scene scene);
 t_line		get_line(int x, int y, t_scene scene);			//TODO
-int			raycast_objs(t_line line, t_scene scene);
+int			raycast_objs(t_line line, t_scene scene, int depth);
+
 float		raycast(t_line line, t_scene scene, t_objlst *obj, int *color);
 
-float		raycast_sphere(t_line line, t_scene scene,		//TODO
-							t_sphere *obj, int *color);
-float		raycast_plane(t_line line, t_scene scene,		//TODO
-							t_plane *obj, int *color);
-float		raycast_square(t_line line, t_scene scene,		//TODO
-							t_square *obj, int *color);
-float		raycast_cylinder(t_line line, t_scene scene,	//TODO
-							t_cylinder *obj, int *color);
-float		raycast_triangle(t_line line, t_scene scene,	//TODO
-							t_triangle *obj, int *color);
+	float		raycast_sphere(t_line line, t_scene scene,		//TODO
+								t_sphere *sphere, int *color);
+	float		raycast_plane(t_line line, t_scene scene,		//TODO
+								t_plane *plane, int *color);
+	float		raycast_square(t_line line, t_scene scene,		//TODO
+								t_square *square, int *color);
+	float		raycast_cylinder(t_line line, t_scene scene,	//TODO
+								t_cylinder *cylinder, int *color);
+	float		raycast_triangle(t_line line, t_scene scene,	//TODO
+								t_triangle *triangle, int *color);
+	float		positive_smallest(float a, float b);
+
+int			apply_amb_light(t_scene scene, int color);
+int			apply_lightlst(t_scene scene, t_objlst *obj, t_xyz point, int color);
 
 //-----//	do_everything end		//------------------------------//
 
@@ -88,6 +94,17 @@ t_euler		normalize_euler(t_euler euler);
 t_xyz		new_vec(float x, float y, float z);
 t_xyz		cross(t_xyz vec1, t_xyz vec2);
 float		dot(t_xyz v1, t_xyz v2);
+
+t_xyz		get_normal(t_objlst *obj, t_xyz point);
+	t_xyz		get_sphere_normal(t_sphere *sphere, t_xyz point);
+	t_xyz		get_plane_normal(t_plane *plane, t_xyz point);
+	t_xyz		get_square_normal(t_square *square, t_xyz point);
+	t_xyz		get_cylinder_normal(t_cylinder *cylinder, t_xyz point);
+	t_xyz		get_triangle_normal(t_triangle *triangle, t_xyz point);
+
+t_line		get_bounce_line(t_objlst *obj, t_line line, float distance);
+
+int			color_add(int color1, int color2);
 
 //-----//							//------------------------------//
 
