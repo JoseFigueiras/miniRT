@@ -11,15 +11,17 @@ SRCS		=	minirt.c								\
 OBJS		= 	$(SRCS:.c=.o)
 
 all: $(OBJS)
-	gcc $(OBJS) -Lminilibx -lmlx_Linux -lm -lXext -lX11 -o $(NAME)
+	gcc $(FLAGS) $(OBJS) -Lminilibx -lmlx_Linux -lm -lXext -lX11 -o $(NAME)
 
 %.o: %.c
-	gcc $< -c -o $@ $(INCLUDES)
+	gcc $(FLAGS) $< -c -o $@ $(INCLUDES)
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY: all clean fclean re bonus
