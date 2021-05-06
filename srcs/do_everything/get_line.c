@@ -24,11 +24,11 @@ t_line	get_line(int x, int y, t_scene scene)
 	line.point = scene.camlst->coords;
 	line.vec = euler_to_vec(euler);
 
-	if (x == 540 && y == 360)
-	{
-		printf("euler:\nyaw: %f, pitch %f\n", euler.yaw, euler.pitch);
-		printf("vec: \nx: %f, y: %f, z: %f\n", line.vec.x, line.vec.y, line.vec.z);
-	}
+	//if (x == 540 && y == 360)
+	//{
+	//	printf("euler:\nyaw: %f, pitch %f\n", euler.yaw, euler.pitch);
+	//	printf("vec: \nx: %f, y: %f, z: %f\n", line.vec.x, line.vec.y, line.vec.z);
+	//}
 	return (line);
 }
 
