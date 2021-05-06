@@ -1,6 +1,5 @@
 #include "minirt.h"
 
-static float			positive_smallest(float a, float b);
 static float	sphere_equation_det(t_sphere *sphere, t_line line, float *a, float *b);
 
 float		raycast_sphere(t_line line, t_scene scene,
@@ -12,6 +11,7 @@ float		raycast_sphere(t_line line, t_scene scene,
 	float		c;
 	float		det;
 
+	(void)scene;
 	c = sphere_equation_det(sphere, line, &a, &b);
 	det = b * b - 4 * a * c;
 	if (det	>= 0)
@@ -48,23 +48,4 @@ static float	sphere_equation_det(t_sphere *sphere, t_line line, float *a, float 
 		+ (ray_origin.z - s_origin.z)
 		* (ray_origin.z - s_origin.z) - radius * radius;
 	return (c);
-}
-
-static float			positive_smallest(float a, float b)
-{
-	if (a < 0)
-	{
-		if (b > 0)
-			return (b);
-		return (INFINITY);
-	}
-	if (b < 0)
-	{
-		if (a > 0)
-			return (a);
-		return (INFINITY);
-	}
-	if (a < b)
-		return (a);
-	return (b);
 }
