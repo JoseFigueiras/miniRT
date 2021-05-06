@@ -18,8 +18,8 @@ t_scene	get_scene(int fd)
 		free(temp);
 		if (!words || !*words)		//what am i even doing
 			exit(54);
-		for (int j = 0; words[j]; j++)
-			//printf("%s\n", words[j]);
+	//	for (int j = 0; words[j]; j++)
+	//		printf("%s\n", words[j]);
 		//printf("--------\n");
 		scene = parse_and_fill_scene(scene, words);
 		i = 0;
@@ -37,9 +37,13 @@ static t_scene init_scene(void)
 	scene.mlx_data = NULL;
 	scene.img_data = NULL;
 	scene.objlst = NULL;
+	scene.lightlst = NULL;
 	scene.amb = NULL;
 	scene.camlst = NULL;
 	scene.res = NULL;
+	scene.depth = malloc(sizeof(int));
+	if (!scene.depth)
+		exit(74);
 	return (scene);
 }
 
