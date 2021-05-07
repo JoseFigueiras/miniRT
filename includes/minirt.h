@@ -21,6 +21,10 @@
 # define MAX_DEPTH 5
 # define MIN_THRESHOLD 0.1
 
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
+# define ESC 65307
+
 char		*get_file_name(int argc, char **argv);
 
 //-----//	get_scene				//------------------------------//
@@ -47,6 +51,7 @@ int			is_scene_valid(t_scene scene);					//TODO
 
 //-----//	do_everything			//------------------------------//
 void		do_everything(t_scene scene);
+int			my_key_hook(int keycode, t_scene *scene);
 int			get_pixel_color(int x, int y, t_scene scene);
 t_line		get_line(int x, int y, t_scene scene);			//TODO
 int			raycast_objs(t_line line, t_scene scene, int depth);
