@@ -41,9 +41,6 @@ static t_scene init_scene(void)
 	scene.amb = NULL;
 	scene.camlst = NULL;
 	scene.res = NULL;
-	scene.depth = malloc(sizeof(int));
-	if (!scene.depth)
-		exit(74);
 	return (scene);
 }
 
