@@ -6,6 +6,8 @@ int	main(int argc, char **argv)
 	int		file_descriptor;
 	char	*file_name;
 
+	if (argc < 2)
+		exit(99);
 	file_name = get_file_name(argc, argv);
 	//printf("file name: %s\n", file_name);
 	if (!file_name)
