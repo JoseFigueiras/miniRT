@@ -1,12 +1,25 @@
 #include "minirt.h"
 
+static int	poop(char *str, int *i);
+
 int	get_rgb(char *str)
 {
-	char	temp[9];
 	int		r;
 	int		g;
 	int		b;
+
+	str += poop(str, &r);
+	str++;
+	str += poop(str, &g);
+	str++;
+	str += poop(str, &b);
+	return (create_trgb(0, r, g, b));
+}
+
+static int	poop(char *str, int *color)
+{
 	int		i;
+	char	temp[9];
 
 	ft_memset(temp, '\0', 9);
 	i = 0;
@@ -15,24 +28,6 @@ int	get_rgb(char *str)
 		temp[i] = str[i];
 		i++;
 	}
-	r = ft_atoi(temp);
-	str += i + 1;
-	ft_memset(temp, '\0', 9);
-	i = 0;
-	while (i < 9 && ft_isdigit(str[i]))
-	{
-		temp[i] = str[i];
-		i++;
-	}
-	g = ft_atoi(temp);
-	str += i + 1;
-	ft_memset(temp, '\0', 9);
-	i = 0;
-	while (i < 9 && ft_isdigit(str[i]))
-	{
-		temp[i] = str[i];
-		i++;
-	}
-	b = ft_atoi(temp);
-	return(create_trgb(0, r, g, b));
+	*color = ft_atoi(temp);
+	return (i);
 }

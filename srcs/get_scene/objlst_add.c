@@ -9,7 +9,6 @@ t_objlst	*objlst_add(char **words, t_objlst *lst)
 	void		*obj;
 
 	new = objlst_new(words[0]);
-	//handle this malloc
 	if (!ft_strcmp(words[0], "sp"))
 		obj = sphere_new(words);
 	else if (!ft_strcmp(words[0], "pl"))

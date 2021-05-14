@@ -11,16 +11,12 @@ t_scene	get_scene(int fd)
 	int			i;
 
 	scene = init_scene();
-	//printf("scene inited\n");
 	while (get_next_line(fd, &temp))
 	{
 		words = ft_str_split(temp, WHITE_SPACE);
 		free(temp);
-		if (!words || !*words)		//what am i even doing
+		if (!words || !*words)
 			exit(54);
-	//	for (int j = 0; words[j]; j++)
-	//		printf("%s\n", words[j]);
-		//printf("--------\n");
 		scene = parse_and_fill_scene(scene, words);
 		i = 0;
 		while (words[i])
@@ -30,7 +26,7 @@ t_scene	get_scene(int fd)
 	return (scene);
 }
 
-static t_scene init_scene(void)
+static t_scene	init_scene(void)
 {
 	t_scene	scene;
 
@@ -54,9 +50,9 @@ static t_scene	parse_and_fill_scene(t_scene scene, char **words)
 		scene.camlst = camlst_add(words, scene.camlst);
 	else if (!ft_strcmp(words[0], "l"))
 		scene.lightlst = lightlst_add(words, scene.lightlst);
-	else if (!ft_strcmp(words[0], "sp") || !ft_strcmp(words[0], "pl") ||
-			!ft_strcmp(words[0], "sq") || !ft_strcmp(words[0], "cy") ||
-			!ft_strcmp(words[0], "tr"))
+	else if (!ft_strcmp(words[0], "sp") || !ft_strcmp(words[0], "pl")
+		|| !ft_strcmp(words[0], "sq") || !ft_strcmp(words[0], "cy")
+		|| !ft_strcmp(words[0], "tr"))
 		scene.objlst = objlst_add(words, scene.objlst);
 	return (scene);
 }

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_xyz		get_triangle_normal(t_triangle *triangle, t_xyz point)
+t_xyz	get_triangle_normal(t_triangle *triangle, t_xyz point)
 {
 	t_xyz	vec1;
 	t_xyz	vec2;

@@ -9,11 +9,9 @@ void	do_everything(t_scene scene)
 {
 	scene.mlx_data = get_mlx(scene.res);
 	scene.img_data = get_img(scene.res, scene.mlx_data);
-
 	mlx_loop_hook(scene.mlx_data->mlx, render_next_frame, &scene);
 	mlx_hook(scene.mlx_data->win, 33, 0, my_destroy_window, scene.mlx_data);
 	mlx_key_hook(scene.mlx_data->win, my_key_hook, &scene);
-
 	mlx_loop(scene.mlx_data->mlx);
 }
 
@@ -64,11 +62,11 @@ static t_img	*get_img(t_res *res, t_mlx *mlx)
 		return (NULL);
 	img->img = mlx_new_image(mlx->mlx, res->x, res->y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-									&img->line_length, &img->endian);
+			&img->line_length, &img->endian);
 	return (img);
 }
 
-static int		my_destroy_window(t_mlx *mlx_data)
+static int	my_destroy_window(t_mlx *mlx_data)
 {
 	int	ret;
 

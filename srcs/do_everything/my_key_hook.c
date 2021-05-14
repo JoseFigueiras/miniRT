@@ -10,4 +10,3 @@ int	my_key_hook(int keycode, t_scene *scene)
 		exit(0);
 	return (1);
 }
-

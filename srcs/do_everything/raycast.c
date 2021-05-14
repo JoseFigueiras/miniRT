@@ -5,7 +5,6 @@ float	raycast(t_line line, t_scene scene, t_objlst *obj, int *color)
 	int		type;
 	float	distance;
 
-	//printf("vec: \nx: %f, y: %f, z: %f\n", line.vec.x, line.vec.y, line.vec.z);
 	distance = HUGE_VAL;
 	type = obj->type;
 	if (type == SPHERE)

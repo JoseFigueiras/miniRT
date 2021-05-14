@@ -9,7 +9,7 @@ t_camlst	*camlst_add(char **words, t_camlst *lst)
 	t_xyz		coords;
 	t_xyz		vec;
 	float		fov;
-	
+
 	coords = get_coords(words[1]);
 	vec = get_vec(words[2]);
 	fov = atof(words[3]);

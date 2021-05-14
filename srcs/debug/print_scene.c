@@ -8,7 +8,6 @@ static void	print_lightlst(t_lightlst *lightlst);
 void	print_scene(t_scene scene)
 {
 	printf("\n//-----//Printing Scene//-----//\n\n");
-
 	printf("\n// Printing Res //\n\n");
 	print_res(scene.res);
 	printf("\n// Printing Amb //\n\n");
@@ -19,7 +18,6 @@ void	print_scene(t_scene scene)
 	print_lightlst(scene.lightlst);
 	printf("\n// Printing Objs //\n\n");
 	print_objlst(scene.objlst);
-
 	printf("\n//-----//Finished printing//-----//\n\n");
 }
 
@@ -45,7 +43,8 @@ static void	print_amb(t_amb *amb)
 	}
 	color = amb->color;
 	printf("float brightness: %f\n", amb->brightness);
-	printf("color: r: %d, g: %d, b: %d\n", get_r(color), get_g(color), get_b(color));
+	printf("color: r: %d, g: %d, b: %d\n",
+		get_r(color), get_g(color), get_b(color));
 }
 
 static void	print_camlst(t_camlst *camlst)
@@ -64,9 +63,9 @@ static void	print_camlst(t_camlst *camlst)
 	{
 		printf(" start node\n");
 		printf("coords: x: %f, y: %f, z: %f\n",
-				current->coords.x, current->coords.y, current->coords.z);
+			current->coords.x, current->coords.y, current->coords.z);
 		printf("vec: x: %f, y: %f, z: %f\n",
-				current->vec.x, current->vec.y, current->vec.z);
+			current->vec.x, current->vec.y, current->vec.z);
 		printf("float fov: %f\n", current->fov);
 		printf(" end node\n");
 		current = current->next;
@@ -88,9 +87,11 @@ static void	print_lightlst(t_lightlst *lightlst)
 	{
 		color = current->color;
 		printf("start node\n");
-		printf("coords: x: %f, y: %f, z: %f\n", current->coords.x, current->coords.y, current->coords.z);
+		printf("coords: x: %f, y: %f, z: %f\n", current->coords.x,
+			current->coords.y, current->coords.z);
 		printf("float brightness: %f\n", current->brightness);
-		printf("color: r: %d, g: %d, b: %d\n", get_r(color), get_g(color), get_b(color));
+		printf("color: r: %d, g: %d, b: %d\n",
+			get_r(color), get_g(color), get_b(color));
 		printf("end node\n");
 		current = current->next;
 	}

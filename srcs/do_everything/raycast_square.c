@@ -1,7 +1,7 @@
 #include "minirt.h"
 
-float		raycast_square(t_line line, t_scene scene,
-							t_square *square, int *color)
+float	raycast_square(t_line line, t_scene scene,
+						t_square *square, int *color)
 {
 	float	n;
 	float	d;
@@ -19,8 +19,8 @@ float		raycast_square(t_line line, t_scene scene,
 	if (distance > 0)
 	{
 		intersect = vec_add(line.point, vec_scale(line.vec, distance));
-		if (intersect.z < square->coords.z + square->side / 2 &&
-			intersect.z > square->coords.z - square->side / 2)
+		if (intersect.z < square->coords.z + square->side / 2
+			&& intersect.z > square->coords.z - square->side / 2)
 		{
 			*color = square->color;
 			return (distance);

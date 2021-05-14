@@ -6,7 +6,7 @@ size_t	get_arr_size(char **arr)
 
 	count = 0;
 	if (!arr)
-		return(0);
+		return (0);
 	while (*arr++)
 		count++;
 	return (count);

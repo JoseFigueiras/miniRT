@@ -1,7 +1,8 @@
 #include "minirt.h"
 
 static int		apply_reflection(t_line bounce_line, t_scene scene, int color,
-									int depth);
+					int depth);
+static void		init_vars(int *color, float *distance, float *distance_temp);
 
 int	raycast_objs(t_line line, t_scene scene, int depth)
 {
@@ -10,12 +11,8 @@ int	raycast_objs(t_line line, t_scene scene, int depth)
 	int			obj_color;
 	float		distance;
 	float		distance_temp;
-	t_line		bounce_line;
 
-	color = 0;
-	obj_color = 0;
-	distance = HUGE_VAL;
-	distance_temp = 0;
+	init_vars(&color, &distance, &distance_temp);
 	current = scene.objlst;
 	while (current)
 	{
@@ -23,20 +20,26 @@ int	raycast_objs(t_line line, t_scene scene, int depth)
 		if (distance_temp < distance)
 		{
 			distance = distance_temp;
-			bounce_line = get_bounce_line(current, line, distance);
-
 			color = 0;
 			color = color_add(color, apply_amb_light(scene, obj_color));
 			color = color_add(color, apply_lightlst(scene, current,
-								vec_scale(line.vec, distance), obj_color));
-			color = apply_reflection(bounce_line, scene, color, depth);
+						vec_scale(line.vec, distance), obj_color));
+			color = apply_reflection(get_bounce_line(current, line, distance),
+					scene, color, depth);
 		}
 		current = current->next;
 	}
 	return (color);
 }
 
-static int		apply_reflection(t_line bounce_line, t_scene scene, int color,
+static void	init_vars(int *color, float *distance, float *distance_temp)
+{
+	*color = create_trgb(0, 60, 0, 60);
+	*distance = HUGE_VAL;
+	*distance_temp = 0;
+}
+
+static int	apply_reflection(t_line bounce_line, t_scene scene, int color,
 									int depth)
 {
 	int	reflect_color;

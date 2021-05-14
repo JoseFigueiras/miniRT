@@ -1,8 +1,10 @@
 #include "minirt.h"
 
-static int	in_height_range(t_cylinder *cylinder, t_line line, float distance);
+static int		in_height_range(t_cylinder *cylinder, t_line line,
+					float distance);
+static float	poop(t_line line, t_cylinder *cylinder, float *a, float *b);
 
-float		raycast_cylinder(t_line line, t_scene scene,
+float	raycast_cylinder(t_line line, t_scene scene,
 							t_cylinder *cylinder, int *color)
 {
 	float	a;
@@ -12,21 +14,13 @@ float		raycast_cylinder(t_line line, t_scene scene,
 	float	distance;
 
 	(void)scene;
-	a = line.vec.x * line.vec.x + line.vec.y * line.vec.y;
-	b = 2 * (line.point.x * line.vec.x + line.point.y * line.vec.y
-		- line.vec.x * cylinder->coords.x - line.vec.y * cylinder->coords.y);
-	c = line.point.x * line.point.x + line.point.y * line.point.y +
-		cylinder->coords.x * cylinder->coords.x + 
-		cylinder->coords.y * cylinder->coords.y - 
-		(cylinder->diameter / 2) * (cylinder->diameter / 2) - 2 *
-		(line.point.x * cylinder->coords.x +
-		line.point.y * cylinder->coords.y);
+	c = poop(line, cylinder, &a, &b);
 	det = b * b - 4 * a * c;
 	if (det >= MIN_THRESHOLD)
 	{
 		det = sqrt(det);
 		distance = positive_smallest((-b + det) / (2 * a),
-										(-b - det) / (2 * a));
+				(-b - det) / (2 * a));
 		if (in_height_range(cylinder, line, distance))
 		{
 			*color = cylinder->color;
@@ -34,6 +28,23 @@ float		raycast_cylinder(t_line line, t_scene scene,
 		}
 	}
 	return (HUGE_VAL);
+}
+
+static float	poop(t_line line, t_cylinder *cylinder, float *a, float *b)
+{
+	float	c;
+
+	*a = line.vec.x * line.vec.x + line.vec.y * line.vec.y;
+	*b = 2 * (line.point.x * line.vec.x + line.point.y * line.vec.y
+			- line.vec.x * cylinder->coords.x - line.vec.y
+			* cylinder->coords.y);
+	c = line.point.x * line.point.x + line.point.y * line.point.y
+		+ cylinder->coords.x * cylinder->coords.x
+		+ cylinder->coords.y * cylinder->coords.y
+		- (cylinder->diameter / 2) * (cylinder->diameter / 2) - 2
+		* (line.point.x * cylinder->coords.x
+			+ line.point.y * cylinder->coords.y);
+	return (c);
 }
 
 static int	in_height_range(t_cylinder *cylinder, t_line line, float distance)

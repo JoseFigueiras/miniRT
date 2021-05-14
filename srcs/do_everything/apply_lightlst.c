@@ -1,10 +1,10 @@
 #include "minirt.h"
 
-static int	light_raycast_objs(t_scene scene, t_line line, t_objlst *obj);
-static int	apply_light(t_lightlst *light, t_xyz point, t_objlst *obj,
-						int color);
+static int		light_raycast_objs(t_scene scene, t_line line, t_objlst *obj);
+static int		apply_light(t_lightlst *light, t_xyz point, t_objlst *obj,
+					int color);
 static float	local_get_product(t_lightlst *light, t_xyz point,
-									t_objlst *obj);
+					t_objlst *obj);
 
 int	apply_lightlst(t_scene scene, t_objlst *obj, t_xyz point, int obj_color)
 {
@@ -22,7 +22,8 @@ int	apply_lightlst(t_scene scene, t_objlst *obj, t_xyz point, int obj_color)
 		has_shadow = light_raycast_objs(scene, line, obj);
 		if (!has_shadow)
 		{
-			color = color_add(color, apply_light(current, point, obj, obj_color));
+			color = color_add(color, apply_light(current, point, obj,
+						obj_color));
 		}
 		current = current->next;
 	}
