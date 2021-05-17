@@ -34,7 +34,7 @@ int	raycast_objs(t_line line, t_scene scene, int depth)
 
 static void	init_vars(int *color, float *distance, float *distance_temp)
 {
-	*color = create_trgb(0, 60, 0, 60);
+	*color = create_trgb(0, 0, 0, 0);
 	*distance = HUGE_VAL;
 	*distance_temp = 0;
 }
