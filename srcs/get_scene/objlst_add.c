@@ -19,6 +19,8 @@ t_objlst	*objlst_add(char **words, t_objlst *lst)
 		obj = cylinder_new(words);
 	else if (!ft_strcmp(words[0], "tr"))
 		obj = triangle_new(words);
+	else
+		obj = NULL;
 	new->obj = obj;
 	if (!lst)
 		lst = new;

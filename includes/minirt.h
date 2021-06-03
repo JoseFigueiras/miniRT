@@ -7,7 +7,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "mlx.h"
-# include "../Libft/libft.h"
+# include "libft.h"
 # include "structs.h"
 
 # define SPHERE 1
@@ -21,9 +21,9 @@
 # define MAX_DEPTH 5
 # define MIN_THRESHOLD 0.1
 
-# define LEFT_ARROW 65361
-# define RIGHT_ARROW 65363
-# define ESC 65307
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define ESC 53
 
 char		*get_file_name(int argc, char **argv);
 

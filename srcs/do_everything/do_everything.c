@@ -10,7 +10,7 @@ void	do_everything(t_scene scene)
 	scene.mlx_data = get_mlx(scene.res);
 	scene.img_data = get_img(scene.res, scene.mlx_data);
 	mlx_loop_hook(scene.mlx_data->mlx, render_next_frame, &scene);
-	mlx_hook(scene.mlx_data->win, 33, 0, my_destroy_window, scene.mlx_data);
+	mlx_hook(scene.mlx_data->win, 17, 131072, my_destroy_window, scene.mlx_data);
 	mlx_key_hook(scene.mlx_data->win, my_key_hook, &scene);
 	mlx_loop(scene.mlx_data->mlx);
 }
